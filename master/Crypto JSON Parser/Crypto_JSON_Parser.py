@@ -4,7 +4,15 @@ This is a JSON Parser made to read CoinMarketCap API Information such as Cryptoc
 
 import urllib.request, json
 
-with urllib.request.urlopen("https://api.coinmarketcap.com/v2/ticker/1/") as url:
-    requestedinfo = json.loads(url.read().decode())
-    print(requestedinfo['data']['id'],requestedinfo['data']['name'], requestedinfo['data']['symbol'], requestedinfo['data']['quotes']['USD']['price'])
-     
+def bitcoin():
+
+    with urllib.request.urlopen("https://api.coinmarketcap.com/v2/ticker/1/") as url:
+        information = json.loads(url.read().decode())
+        name = (information['data']['name'])
+        symbol = (information['data']['symbol'])
+        price = (information['data']['quotes']['USD']['price'])
+        market_cap = (str(information['data']['quotes']['USD']['market_cap']))
+        print('Name = ' + name + '\nSymbol =  ' + symbol + '\nPrice = ' + str(price) + '\nMarket Cap =  ' + str(market_cap))
+
+
+bitcoin()
